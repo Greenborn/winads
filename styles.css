@@ -1,0 +1,58 @@
+@font-face {
+    font-family: SolitasSerif;
+    src: url('./fonts/solitas-serif-cond-medium-it.otf')
+}
+
+.container{
+    position: relative;
+}
+
+.background {
+    background: linear-gradient(to bottom, #f75555 0%, #ff5758 100%);
+    z-index: 1000;
+    position: relative;
+}
+
+.btn-light, .title{
+    font-family: "SolitasSerif";
+}
+
+.btn-light{
+    color: #f75555;
+    font-size: 1.75rem;
+    font-weight: bolder;
+    border-radius: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.title{
+    text-shadow: 1px 1px 2px black;
+    font-size: 3rem;
+    color:#fff;
+    font-weight: bold;
+}
+
+.disable-select {
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    pointer-events: none;
+}
+
+.img-tiquet{
+    position: absolute;
+    left: calc(50% - 90px);
+    transform: rotate(45deg);
+}
+
+.lupa-cnt{
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.form-control{
+    border-radius: 25px !important;
+}
