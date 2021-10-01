@@ -26,9 +26,13 @@
     padding-right: 30px;
 }
 
+.btn-light:hover {
+    color: #fc5657;
+}
+
 .title{
     text-shadow: 1px 1px 2px black;
-    font-size: 3rem;
+    font-size: 2.2rem;
     color:#fff;
     font-weight: bold;
 }
@@ -55,4 +59,27 @@
 
 .form-control{
     border-radius: 25px !important;
+}
+
+.number-cont{
+    overflow: hidden;
+    z-index: 3000;
+    position: relative;
+    height:331px;
+    padding-top: 336px;
+    transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+}
+
+.numero-cont{
+    background: #fff;
+    text-align: center;
+    font-family: SolitasSerif;
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    min-width: 5.5rem;
+    min-height: 4.5rem;
 }
