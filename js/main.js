@@ -18,7 +18,7 @@ $( document ).ready(()=>{
     }
 
     function getUsuario(){
-        let out = $("#username").val();console.log(out);
+        let out = $("#username").val();
         if (out == '' || !out.match("(?:^|[^\w])(?:@)([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)") || out.search(" ") != -1){
             $("#username").val("Ingrese un nombre válido");
             $("#username").css('color','#f00');
@@ -31,12 +31,15 @@ $( document ).ready(()=>{
     $("#username").click(()=>{
         $("#username").val("");
         $("#username").css('color','#000');
+        $(".number-cont").css('padding-top',"336px");
     });
 
     $('#comprobarBtn').click(()=>{
         let user = getUsuario();
         $(".number-cont").css('padding-top',"336px");
-        
+        if(user != ""){
+            btnAnimate("#comprobarBtn");
+        }
         setTimeout(()=>{
             if (user == ''){
                 return false;
@@ -51,5 +54,13 @@ $( document ).ready(()=>{
         },500);
         
     });
+
+    function btnAnimate(element){
+        $(element).css("color","#f75555");
+        $(element).css("font-size", "1.25rem");
+        setTimeout(()=>{
+            $(element).css("font-size", "1.75rem");
+        },123);
+    }
 
 });

@@ -13,17 +13,12 @@ class ParticipantsController extends BaseController {
     public function actionNumbers($nombreUser){
         header('Content-type: application/json;charset=utf-8');
         header('Access-Control-Allow-Origin: *');
-                
+        
         $nombreUser = strip_tags($nombreUser);
-
         $numbers = Participants::find()
-            ->where([
-                'usuario' => $nombreUser
-            ])
+            ->where(['usuario' => $nombreUser])
             ->where(['>','fecha_hora',self::getInicioSemana()])
-            ->orderBy([
-                'numero' => SORT_ASC
-            ])->all();
+            ->all();
             
         return $numbers;
     }
