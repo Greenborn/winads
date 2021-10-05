@@ -15,13 +15,17 @@ class ParticipantsController extends BaseController {
         header('Access-Control-Allow-Origin: *');
                 
         $nombreUser = strip_tags($nombreUser);
-        $participant = Participants::findOne(['usuario' => $nombreUser]);
-        
-        if ($participant != NULL){
-            return explode(',',$participant->numeros );
-        }
-        
-        return [];
+
+        $numbers = Participants::find()
+            ->where([
+                'usuario' => $nombreUser
+            ])
+            ->where(['>','fecha_hora',self::getInicioSemana()])
+            ->orderBy([
+                'numero' => SORT_ASC
+            ])->all();
+            
+        return $numbers;
     }
 
 }

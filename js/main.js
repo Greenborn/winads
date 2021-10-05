@@ -5,13 +5,13 @@ $( document ).ready(()=>{
     const URL_EP = "api/web/participants/numbers?nombreUser=";
 
     function showNumbers(numbers){
+        $(".numero-cont").text(NO_NUMBER);
         if (numbers.length == 0){
             $("#text-result").html(TEXT_NO_NUMBER);
-            $(".numero-cont").text(NO_NUMBER);
         } else {
             $("#text-result").html(TEXT_SI_NUMBER);
             for(let c=0; c < numbers.length; c++){
-                $("#num-"+c).text("#"+numbers[c]);
+                $("#num-"+c).text("#"+numbers[c].numero);
             }
         }
         $(".number-cont").css('padding-top',"0px");

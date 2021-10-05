@@ -30,9 +30,8 @@ class Participants extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fecha_hora', 'usuario', 'numeros', 'id_usuario', 'ref_historia'], 'required'],
+          //  [['fecha_hora', 'usuario', 'numero', 'id_usuario', 'ref_historia'], 'required'],
             [['fecha_hora'], 'safe'],
-            [['numeros'], 'string'],
             [['usuario', 'id_usuario', 'ref_historia'], 'string', 'max' => 255],
         ];
     }

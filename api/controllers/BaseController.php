@@ -26,6 +26,10 @@ class BaseController extends Controller {
         return $behaviors;
     }
 
-    
+    public static function getInicioSemana(){
+        $diaSemana              = date("w");
+        $tiempoDeInicioDeSemana = strtotime("-" . $diaSemana . " days"); 
+        return date("Y-m-d", $tiempoDeInicioDeSemana);
+    }
 
 }
