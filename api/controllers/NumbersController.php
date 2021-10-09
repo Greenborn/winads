@@ -21,15 +21,23 @@ class NumbersController extends BaseController {
         $arr   = explode('|',$s);
         $arr_u = explode(':', $arr[0]);
 
+        //se obtiene el primer dia de la semana
+        $inicio_semana = self::getInicioSemana();
+        
         //se verifica si tiene ya el mismo numero asignado
         $numbers = Participants::find()
             ->where(['usuario' => $arr_u[0] ])
-            ->where(['>','fecha_hora',self::getInicioSemana()])
-            ->where(['numero'=>intval($arr_u[1])])->all();
-
+            ->andWhere(['>','fecha_hora',$inicio_semana])
+            ->andWhere(['ref_historia'=>$arr[2]])->all();
+            
+        //de ser asì se retorna el mismo para hacer control y que el bot pueda registrarlo en la salida
         if (count($numbers) > 0){
-            return false;
+            return $numbers[0]->usuario.':'.$numbers[0]->numero.'|'.$numbers[0]->id_usuario.'|'.$numbers[0]->ref_historia.'|'.'participante_ya_resgistrado';
         }
+
+        //Se obtiene el nuevo numero del sorteo
+        $numbers = Participants::find() //se obtienen todos los registros posteriores a la fecha indicada, si no existe el num sera 0, caso contrario el numero sera la cantidad de elementos + 1
+            ->where(['>','fecha_hora',$inicio_semana])->all();
                 
         $participant = new Participants();
         $participant->string_completo = $s;
@@ -37,8 +45,12 @@ class NumbersController extends BaseController {
         $participant->id_usuario      = $arr[1];
         $participant->ref_historia    = $arr[2];
         $participant->usuario         = $arr_u[0];
-        $participant->numero          = intval($arr_u[1]);
-        return  $participant->save(false);
+        $participant->numero          = count($numbers)+1;
+
+        if ($participant->save(false)){
+            return  $participant->usuario.':'.$participant->numero.'|'.$participant->id_usuario.'|'.$participant->ref_historia.'|'.'numero_adjudicado';
+        }
+        return 'participante_no_guardado';
     }
 
 }

@@ -17,7 +17,7 @@ class ParticipantsController extends BaseController {
         $nombreUser = strip_tags($nombreUser);
         $numbers = Participants::find()
             ->where(['usuario' => $nombreUser])
-            ->where(['>','fecha_hora',self::getInicioSemana()])
+            ->andWhere(['>','fecha_hora',self::getInicioSemana()])
             ->all();
             
         return $numbers;
