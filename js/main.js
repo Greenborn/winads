@@ -12,6 +12,17 @@ $( document ).ready(()=>{
             $("#text-result").html(TEXT_SI_NUMBER);
             for(let c=0; c < numbers.length; c++){
                 let day = new Date(numbers[c].fecha_hora).getDay();
+                let n_str_l = String(numbers[c].numero).length;
+                if (n_str_l > 4){
+                    $("#num-"+day).css('font-size','1.25rem');
+                    $("#num-"+day).css('padding-top','1.5rem');
+                    $("#num-"+day).css('padding-bottom','1.5rem');
+                } else {
+                    $("#num-"+day).css('font-size','2rem');
+                    $("#num-"+day).css('padding-top','1rem');
+                    $("#num-"+day).css('padding-bottom','1rem');
+                }
+                console.log(n_str_l);
                 $("#num-"+day).text("#"+numbers[c].numero);
             }
         }

@@ -81,4 +81,6 @@
     border-radius: 1.5rem;
     min-width: 5.5rem;
     min-height: 4.5rem;
+    vertical-align: middle;
+    display: table-cell;
 }
